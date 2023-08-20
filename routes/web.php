@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\sensorController;
+use App\Http\Controllers\hardwareController;
 use App\Http\Controllers\AuthController;
 
 /*
@@ -21,4 +22,5 @@ Route::post('/logout', [AuthController::class,'logout']);
 
 Route::group(['middleware' => 'auth'],function(){
     Route::resource('/sensor',sensorController::class);
+    Route::resource('/hardware',hardwareController::class);
 });

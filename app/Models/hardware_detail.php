@@ -11,4 +11,12 @@ class hardware_detail extends Model
     use HasFactory,SoftDeletes;
 
     protected $guarded = [];
+
+    public function hardware(){
+        return $this->hasOne(hardware::class,'hardware','id');
+    }
+
+    public function sensor(){
+        return $this->hasOne(sensor::class,'sensor','id');
+    }
 }

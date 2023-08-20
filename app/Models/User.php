@@ -46,4 +46,8 @@ class User extends Authenticatable
     public function sensor(){
         return $this->hasMany(master_sensor::class,'created_by','id');
     }
+
+    public function hardware(){
+        return $this->hasMany(hardware::class,'created_by','id');
+    }
 }
