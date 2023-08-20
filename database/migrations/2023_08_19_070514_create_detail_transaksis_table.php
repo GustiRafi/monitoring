@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('detail_transaksis', function (Blueprint $table) {
             $table->id();
             $table->foreignId('transaksi_id')->constrained('transaksis')->cascadeOnDelete();
-            $table->bigInteger('hardware')->foreign()->constrained('hardware.hardware')->cascadeOnDelete();
-            $table->string('sensor')->foreign()->constrained('master_sensors.sensor')->cascadeOnDelete();
+            $table->foreignId('hardware')->constrained('hardware')->cascadeOnDelete();
+            $table->foreignId('sensor')->constrained('master_sensors')->cascadeOnDelete();
             $table->float('value', 6, 3);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -42,4 +42,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function sensor(){
+        return $this->hasMany(master_sensor::class,'created_by','id');
+    }
 }

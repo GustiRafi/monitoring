@@ -12,15 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('hardware', function (Blueprint $table) {
-            // $table->id();
-            $table->bigInteger('hardware')->primary();
+            $table->id();
+            $table->bigInteger('hardware');
             $table->string('location');
-            $table->string('timezone');
+            $table->string('timezone')->default('7');
             $table->timestamp('local_time')->nullable();
             $table->decimal('latitude', 10, 7);
             $table->decimal('longitude', 10, 7);
             $table->foreignId('created_by')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

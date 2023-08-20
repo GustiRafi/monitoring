@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('hardware')->foreign()->constrained('hardware.hardware')->cascadeOnDelete();
+            $table->foreignId('hardware')->constrained('hardware')->cascadeOnDelete();
             $table->string('parameter');
-            $table->bigInteger('created_by')->foreign()->constrained('hardware.hardware')->cascadeOnDelete();
+            $table->foreignId('created_by')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('hardware_details', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('hardware')->foreign()->constrained('hardware.hardware')->cascadeOnDelete();
-            $table->string('sensor')->foreign()->constrained('master_sensors.sensor')->cascadeOnDelete();
+            $table->foreignId('hardware')->constrained('hardware')->cascadeOnDelete();
+            $table->foreignId('sensor')->constrained('master_sensors')->cascadeOnDelete();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
