@@ -1,26 +1,19 @@
-import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'leaflet';
+import React, { useEffect } from 'react';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
 
-export default function MapComponent({ latitude,longitude }){
-  return (
-    <>
-    <MapContainer center={[0, 0]} zoom={2} style={{ height: '400px', width: '100%' }}>
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      />
+const MapComponent = ({ latitude, longitude }) => {
+  useEffect(() => {
+    const map = L.map('map').setView([latitude, longitude], 12);
 
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
-        <Marker position={[latitude, longitude]}>
-          <Popup>
-            <div>
-              <p>Latitude: {latitude}</p>
-              <p>Longitude: {longitude}</p>
-            </div>
-          </Popup>
-        </Marker>
-    </MapContainer>
-    </>
-  );
+    L.marker([latitude, longitude]).addTo(map);
+  }, [latitude, longitude]);
+
+  return <div id="map" style={{ width: '100%', height: '400px' }} />;
 };
 
+export default MapComponent;

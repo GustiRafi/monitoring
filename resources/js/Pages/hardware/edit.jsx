@@ -42,6 +42,7 @@ export default function EditHardware({ errors,hardwares,sensors }) {
             location: location,
             latitude: latitude,
             longitude: longitude,
+            sensor: selectedSensors
         });
     }
 

@@ -65,7 +65,7 @@ class hardwareController extends Controller
     public function show(string $id)
     {
         return inertia('hardware/show',[
-            'hardwares' =>  hardware::with('detail')->firstWhere('id',$id),
+            'hardwares' =>  hardware::with('detail.sensors')->findOrFail($id),
         ]);
     }
 
@@ -97,7 +97,7 @@ class hardwareController extends Controller
 
         $hardware->update($validate);
 
-        $hardware->detail()->delete();
+        $hardware->detail()->forceDelete();
 
         $sensorIds = $request->input('sensor', []);
         foreach ($sensorIds as $sensorId) {

@@ -26,17 +26,17 @@ export default function ShowHardware({ errors,hardwares }) {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            {/* <tr>
                                 <td>{hardwares.hardware}</td>
                                 <td>{hardwares.sensor}</td>
-                            </tr>
-                        {/* { hardwares.detail.map((detail, index) => (
+                            </tr> */}
+                        { hardwares.detail.map((detail, index) => (
                             <tr>
-                                <td></td>
-                                <td>{ detail.hardware }</td>
-                                <td>{ detail.sensor }</td>
+                                <td>{index + 1}</td>
+                                <td>{ hardwares.hardware }</td>
+                                <td>{ detail.sensors.sensor }</td>
                             </tr>
-                        )) } */}
+                        )) }
                         </tbody>
                     </table>
                 </div>
@@ -44,17 +44,16 @@ export default function ShowHardware({ errors,hardwares }) {
                 </div>
             </div>
 
-            <MapComponent latitude={hardwares.latitude} longitude={hardwares.longitude} />
 
-            {/* <div className="row" style={{ marginTop: '20px' }}>
+            <div className="row" style={{ marginTop: '20px',marginBottom: '50px' }}>
         <div className="col-12">
           <div className="card border-0 rounded shadow-sm">
             <div className="card-body">
-              <MapComponent alat={hardwares.detail} />
+            <MapComponent latitude={hardwares.latitude} longitude={hardwares.longitude} />
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
         </Layout>
     )
 }

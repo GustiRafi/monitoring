@@ -38,7 +38,7 @@ export default function HardwareIndex({ hardwares, session = { success: null }  
                                 <th scope="col">local time</th>
                                 <th scope="col">latitude</th>
                                 <th scope="col">longitude</th>
-                                {/* <th scope="col">sensor</th> */}
+                                <th scope="col">sensor</th>
                                 <th scope="col">created by</th>
                                 <th scope="col">action</th>
                             </tr>
@@ -53,11 +53,7 @@ export default function HardwareIndex({ hardwares, session = { success: null }  
                                 <td>{ hardware.local_time }</td>
                                 <td>{ hardware.latitude }</td>
                                 <td>{ hardware.longitude }</td>
-                                {/* <td>
-                                {hardware.detail.map((item,key) => (
-                                 <div>{item.sensor}</div>
-                                ))}
-                                </td> */}
+                                <td>{hardware.detail.length}</td>
                                 <td>{ hardware.user.name }</td>
                                 <td className="text-center">
                                     <Link href={`hardware/${hardware.id}/edit`} className="btn btn-sm btn-primary me-2">EDIT</Link>

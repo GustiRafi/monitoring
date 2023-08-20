@@ -17,7 +17,7 @@ class hardware extends Model
     }
 
     public function detail(){
-        return $this->hasMany(hardware_detail::class,'id','hardware');
+        return $this->hasMany(hardware_detail::class,'hardware','id');
     }
 
     

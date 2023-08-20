@@ -16,7 +16,7 @@ class hardware_detail extends Model
         return $this->hasOne(hardware::class,'hardware','id');
     }
 
-    public function sensor(){
-        return $this->hasOne(sensor::class,'sensor','id');
+    public function sensors(){
+        return $this->hasOne(master_sensor::class,'id','sensor');
     }
 }
