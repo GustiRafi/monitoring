@@ -17,6 +17,12 @@ class hardwareController extends Controller
      */
     public function index()
     {
+
+        if(Auth::user()->role == 'user'){
+            return inertia('user/hardware/list',[
+                'hardwares' =>  hardware::with('user','detail')->get(),
+            ]);
+        }
         return inertia('hardware/list',[
             'hardwares' =>  hardware::with('user','detail')->get(),
         ]);

@@ -13,6 +13,11 @@ class sensorController extends Controller
      */
     public function index()
     {
+        if(Auth::user()->role == 'user'){
+            return inertia('user/sensor/list',[
+                'sensor' =>  master_sensor::with('user')->get(),
+            ]);
+        }
         return inertia('sensor/list',[
             'sensor' =>  master_sensor::with('user')->get(),
         ]);
